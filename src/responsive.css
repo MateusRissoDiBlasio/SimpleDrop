@@ -1,0 +1,168 @@
+@media (max-width: 375px){
+
+    .App {
+        text-align: center;
+      }
+      
+      .App-logo {
+        height: 10vmin;
+        pointer-events: none;
+      }
+      
+      @media (prefers-reduced-motion: no-preference) {
+        .App-logo {
+          animation: App-logo-spin infinite 20s linear;
+        }
+      }
+      
+      .App-header {
+        background-color: #282c34;
+        min-height: 20vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(8px + 2vmin);
+        color: white;
+        gap: 5px;
+      }
+      
+      .App-link {
+        color: #61dafb;
+      }
+      
+      .App-body{
+        background-color: #282c34;
+        height: 1000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(5px + 2vmin);
+        color: white;
+      
+      } 
+      
+      @keyframes App-logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .logo{
+        width: 200px;
+      }
+      
+      input{
+        margin-left: 15px;
+        
+      }
+      
+      .info{
+        display: flex;
+        height: 60vh;
+        width: 300px;
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .alert{
+          font-size: 14px;
+          margin: 2px;
+        }
+
+        h4{
+          font-size: 12px;
+        }
+        h6{
+          font-size: 12px;
+        }
+      }
+      
+      .pontos{
+        display: flex;
+        flex-direction: row;
+        height: 40px;
+        margin-bottom: 10px;
+        align-items: center;
+        gap: 10px;
+        h4{
+          display: flex;
+          margin: 0;
+          font-size: 18px;
+        }
+        h2{
+          display: flex;
+          margin: 0;
+          font-size: 26px;
+        }
+      }
+      
+      .qtd-objetos{
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        gap: 10px;
+        h4{
+          display: flex;
+          margin: 0;
+          font-size: 18px;
+        }
+        h2{
+          display: flex;
+          margin: 0;
+          font-size: 26px;
+        }
+      }
+      
+      .nav{
+        height: 10vh;
+        height: 56;
+      }
+      
+      .nextPrev{
+        width:120px;  
+        margin: 10px;
+      }
+      
+      .directions{
+        width: 100vw;
+        height: 420px;
+        position: relative;
+        background-color: #282c34;
+        margin-top: 25px;
+        margin-left: -18px;
+       
+        button{ 
+          margin: 5px;
+        }
+      
+        li{
+          list-style-type: decimal;
+        }
+
+
+        h2{
+          font-size: 14px;
+          color:red;
+        }
+      
+        p{
+          font-size: 14px;
+          color:red;
+        }
+
+        .navdiv{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      
+      }    
+
+}

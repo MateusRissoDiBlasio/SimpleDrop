@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.App-body{
+  background-color: #282c34;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(4.2px + 2vmin);
+  color: white;
+
+} 
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +47,110 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.logo{
+  width: 250px;
+}
+
+input{
+  margin-left: 15px;
+  
+}
+
+.info{
+  display: flex;
+  height: 60vh;
+  width: 500px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pontos{
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  margin-bottom: 10px;
+  align-items: center;
+  gap: 10px;
+  h4{
+    display: flex;
+    margin: 0;
+    font-size: 18px;
+  }
+  h2{
+    display: flex;
+    margin: 0;
+    font-size: 26px;
+  }
+}
+
+.qtd-objetos{
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  gap: 10px;
+  h4{
+    display: flex;
+    margin: 0;
+    font-size: 18px;
+  }
+  h2{
+    display: flex;
+    margin: 0;
+    font-size: 26px;
+  }
+}
+
+.nav{
+  height: 10vh;
+  height: 56;
+}
+
+.nextPrev{
+  width:120px;  
+  margin: 10px;
+}
+
+.directions{
+  width: 250px;
+  position: relative;
+  background-color: #282c34;
+  margin-top: -500px;
+  margin-left: 450px;
+
+  h2{
+    font-size: 12px;
+    color:red;
+  }
+
+  p{
+    font-size: 12px;
+    color:red;
+  }
+
+  img{
+    margin: 10px;
+    width: 130px;
+  }
+}
+
+.alert{
+  color: red;
+}
+
+.info{
+  display: flex;
+  
+  h4, h6{
+  display: flex;
+  margin: 5px;
+  flex-direction: column;
+  }
+}
+
+.navdiv img:hover{
+  cursor: pointer;
+  scale: 1.2
 }

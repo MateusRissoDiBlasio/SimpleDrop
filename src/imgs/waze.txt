@@ -1,0 +1,5 @@
+<a 
+  href={`https://waze.com/ul?ll=${this.state.linkLat},${this.state.linkLng}&navigate=yes`} 
+  target="_blank">
+    Open in Waze
+</a>
