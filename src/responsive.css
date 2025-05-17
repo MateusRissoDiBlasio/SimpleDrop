@@ -1,5 +1,8 @@
 @media (max-width: 375px){
 
+  #root{
+    height: 100vh;
+  }
     .App {
         text-align: center;
       }
@@ -17,7 +20,7 @@
       
       .App-header {
         background-color: #282c34;
-        min-height: 20vh;
+        height: 22vh;
         display: flex;
         width: 100vw;
         flex-direction: column;
@@ -59,7 +62,7 @@
       .App-body{
         background-color: #282c34;
         /* height: 1000px; */
-        height: 520px;
+        height: 78vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -83,7 +86,7 @@
       }
       
       input{
-        margin-left: 15px;
+        margin-left: 5px;
         
       }
       
@@ -172,7 +175,7 @@
         background-color: #282c34;
         margin-top: 10px;
         margin-left: -10px;
-       
+        
         button{ 
           margin: 5px;
         }

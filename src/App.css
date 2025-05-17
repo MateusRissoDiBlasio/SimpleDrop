@@ -15,13 +15,23 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 20vh;
+  height: 22vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+  form{
+    label{
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.filesselection{
+  margin-bottom: 10px;
 }
 
 .App-link {
@@ -30,7 +40,7 @@
 
 .App-body{
   background-color: #282c34;
-  height: 80vh;
+  height: 78vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -170,4 +180,9 @@ input{
 .navapps img:nth-child(2){
   width: 65px;
   height: 65px;
+}
+
+.navapps img:hover{
+  scale: 1.2;
+  cursor: pointer;
 }

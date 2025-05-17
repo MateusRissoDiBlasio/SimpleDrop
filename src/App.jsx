@@ -313,17 +313,17 @@ function refreshPage(){
 function wazeNav(){
   // window.open(`https://www.waze.com/ul?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
   // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
-  if (endcoord !== undefined){
-  window.open(`waze://?ll=${element}&navigate=yes&zoom=10`);
-  }else{ 
+  if (endcoord === undefined){
   window.open(`waze://?q=${element}&navigate=yes&zoom=10`);
+  }else{ 
+  window.open(`waze://?ll=${element}&navigate=yes&zoom=10`);
   }
 }
 
 function mapsNav(){ 
   window.open(`https://www.google.com/maps/dir/?api=1&origin=${userLocation.latitude}%2C${userLocation.longitude}&destination=${element}&travelmode=driving`, "_blank");
 }
-
+console.log(endcoord)
 console.log(element)
 
 return (
@@ -335,7 +335,7 @@ return (
       <img src={logo} className='logo' alt="logo" />    
       <div className='filesselection'>
         <form>
-            <label htmlFor="upload">Importar LOEC</label><br></br>
+            <label htmlFor="upload">Importar LOEC</label>
             
             <input
                 type="file"
@@ -345,7 +345,7 @@ return (
             />
         </form>
         <form>
-            <label htmlFor="upload">Coordenadas</label><br></br>
+            <label htmlFor="upload">Coordenadas</label>
             
             <input
                 type="file"
