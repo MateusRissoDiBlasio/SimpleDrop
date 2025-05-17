@@ -1,9 +1,11 @@
 import logo from './imgs/logo-fundo-branco-escrito-em-branco.png';
+import waze from './imgs/logowaze.png';
+import maps from './imgs/logomaps.png';
 import { useState, useEffect } from 'react';
 import './App.css';
 import * as xlsx from 'xlsx';
 import styled from 'styled-components'
-import Intro from './NavigationMap';
+// import Intro from './NavigationMap';
 import './responsive.css'
 
 
@@ -304,10 +306,20 @@ function refreshPage(){
   window.location.reload(false)
 };
 
+function wazeNav(){
+  window.open(`https://www.waze.com/ul?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
+}
+
+function mapsNav(){ 
+  window.open(`https://www.google.com/maps/dir/?api=1&origin=${userLocation.latitude}%2C${userLocation.longitude}&destination=${element}&travelmode=driving`, "_blank");
+}
+
+
+
 return (
   <div className="App">
 
-    <h1>just testing</h1>
+    {/* <h1>just testing</h1> */}
     <header className="App-header">
       
       <img src={logo} className='logo' alt="logo" />        
@@ -369,12 +381,18 @@ return (
                 </UlObjetos>  
               </div>
               
-              <div className='info'>
-
+              <div className='navinfo'>
+                
                 <h4>  Endereço: {listaDeEntrega[index][0]}</h4>
 
                 {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo<br></br>de coordenadas, coordenadas baseadas<br></br>pelo endereço informado</p><br></br><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
               
+                <h2>Escolha o App de Navegação:</h2>
+                <div className='navapps'>
+                  <img src={maps} alt="logomaps" onClick={() => mapsNav()} />
+                  <img src={waze} alt="logowaze" onClick={() => wazeNav()} />
+                </div>
+
               </div>             
             </div>
           </div>
@@ -382,7 +400,7 @@ return (
             : <h4> CARREGA A LISTA ANIMAL</h4>}
             
       </div>
-        {lista.length !== 0 && coordLista.length !== 0 ? <Intro key={index} /> : ''}
+        {/* {lista.length !== 0 && coordLista.length !== 0 ? <Intro key={index} /> : ''} */}
     </div>
   </div>
   );
@@ -411,5 +429,11 @@ const UlObjetos = styled.ul`
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
   }
+  
+  @media screen and (min-width: 375px) {
+    max-height: 100px; 
+  }
+
+
 `
 export default App;

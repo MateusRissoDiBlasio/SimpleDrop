@@ -105,7 +105,7 @@ input{
 
 .nav{
   height: 10vh;
-  height: 56;
+  height: 56px;
 }
 
 .nextPrev{
@@ -153,4 +153,21 @@ input{
 .navdiv img:hover{
   cursor: pointer;
   scale: 1.2
+}
+
+.navapps{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  margin-top: 10px;
+  img{
+    width: 80px; 
+  }
+  
+  
+}
+.navapps img:nth-child(2){
+  width: 65px;
+  height: 65px;
 }
