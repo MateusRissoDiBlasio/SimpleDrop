@@ -233,6 +233,9 @@ const [estado, setEstado] = useState(null);
 
 if(lista.length !== 0 && coordLista.length !== 0){
 
+
+  // SÓ FUNCIONA SE O API ESTIVER EM USO
+
   async function getCidadeEstado(latitude, longitude) {
     const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${userLocation.latitude},${userLocation.longitude}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
   
@@ -295,7 +298,8 @@ if (lista.length !== 0 && coordLista.length !== 0){
       var endcoord = coordLista[0][ind][1];
       } else if(endcoord === undefined){
 
-        element = enderecoatual + ", " + cidade + ", " + estado
+        // element = enderecoatual + ", " + cidade + ", " + estado
+        element = enderecoatual
         
       }
     }
@@ -307,14 +311,16 @@ function refreshPage(){
 };
 
 function wazeNav(){
-  window.open(`https://www.waze.com/ul?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
+  // window.open(`https://www.waze.com/ul?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
+  // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
+  window.open(`waze://?ll=${element}&navigate=yes&zoom=17`); 
 }
 
 function mapsNav(){ 
   window.open(`https://www.google.com/maps/dir/?api=1&origin=${userLocation.latitude}%2C${userLocation.longitude}&destination=${element}&travelmode=driving`, "_blank");
 }
 
-
+console.log(element)
 
 return (
   <div className="App">
@@ -322,27 +328,29 @@ return (
     {/* <h1>just testing</h1> */}
     <header className="App-header">
       
-      <img src={logo} className='logo' alt="logo" />        
-      <form>
-          <label htmlFor="upload">Importar LOEC</label><br></br>
-          
-          <input
-              type="file"
-              name="uploadLoec"
-              id="uploadLoec"
-              onChange={readUploadLoecFile}
-          />
-      </form>
-      <form>
-          <label htmlFor="upload">Coordenadas</label><br></br>
-          
-          <input
-              type="file"
-              name="upload"
-              id="uploadCoord"
-              onChange={readUploadCoordenadasFile}
-          />
-      </form>
+      <img src={logo} className='logo' alt="logo" />    
+      <div className='filesselection'>
+        <form>
+            <label htmlFor="upload">Importar LOEC</label><br></br>
+            
+            <input
+                type="file"
+                name="uploadLoec"
+                id="uploadLoec"
+                onChange={readUploadLoecFile}
+            />
+        </form>
+        <form>
+            <label htmlFor="upload">Coordenadas</label><br></br>
+            
+            <input
+                type="file"
+                name="upload"
+                id="uploadCoord"
+                onChange={readUploadCoordenadasFile}
+            />
+        </form>
+      </div>      
       <button onClick={refreshPage}>Recarregar Página</button>
 
     </header>
@@ -431,7 +439,7 @@ const UlObjetos = styled.ul`
   }
   
   @media screen and (min-width: 375px) {
-    max-height: 100px; 
+    max-height: 85px; 
   }
 
 
