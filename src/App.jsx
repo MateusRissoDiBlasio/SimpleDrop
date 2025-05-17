@@ -313,7 +313,11 @@ function refreshPage(){
 function wazeNav(){
   // window.open(`https://www.waze.com/ul?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
   // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
-  window.open(`waze://?ll=${element}&navigate=yes&zoom=17`); 
+  if (endcoord !== undefined){
+  window.open(`waze://?ll=${element}&navigate=yes&zoom=10`);
+  }else{ 
+  window.open(`waze://?q=${element}&navigate=yes&zoom=10`);
+  }
 }
 
 function mapsNav(){ 
