@@ -314,9 +314,9 @@ function wazeNav(){
   // window.open(`https://www.waze.com/ul?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
   // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
   if (endcoord === undefined){
-  window.open(`waze://?q=${element}&navigate=yes&zoom=10`);
+    window.open(`waze://?q=${element}&ll=${userLocation.latitude},${userLocation.longitude}navigate=yes&z=10`);
   }else{ 
-  window.open(`waze://?ll=${element}&navigate=yes&zoom=10`);
+    window.open(`waze://?ll=${element}&navigate=yes&z=10`);
   }
 }
 
@@ -397,7 +397,7 @@ return (
                 
                 <h4>  Endereço: {listaDeEntrega[index][0]}</h4>
 
-                {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo<br></br>de coordenadas, coordenadas baseadas<br></br>pelo endereço informado</p><br></br><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
+                {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo<br></br>de coordenadas, coordenadas baseadas<br></br>pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
               
                 <h2>Escolha o App de Navegação:</h2>
                 <div className='navapps'>
