@@ -299,7 +299,7 @@ if (lista.length !== 0 && coordLista.length !== 0){
       } else if(endcoord === undefined){
 
         // element = enderecoatual + ", " + cidade + ", " + estado
-        element = enderecoatual + ", Nova Friburgo , RJ."
+        element = enderecoatual + ", Nova Friburgo, RJ."
         // element = enderecoatual
       }
     }
@@ -315,9 +315,9 @@ function wazeNav(){
   // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
   if (endcoord === undefined){
     // window.open(`waze://?q=${element}&ll=${userLocation.latitude},${userLocation.longitude}&navigate=yes&z=10`);
-    window.open(`waze://?q=${element}&navigate=yes&z=10`);
+    window.open(`waze://?q=${element}&navigate=yes&zoom=12`);
   }else{ 
-    window.open(`waze://?ll=${element}&navigate=yes&z=10`);
+    window.open(`waze://?ll=${element}&navigate=yes&zoom=12`);
   }
 }
 
