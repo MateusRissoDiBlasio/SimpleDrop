@@ -315,8 +315,8 @@ function wazeNav(){
   // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`, "_blank"); 
   if (endcoord === undefined){
     // window.open(`waze://?q=${element}&ll=${userLocation.latitude},${userLocation.longitude}&navigate=yes&z=10`);
-    // window.open(`waze://?q=${element}&navigate=yes&zoom=17`);
-    window.open(`waze://?q=${element}&zoom=17`);
+    window.open(`waze://?q=${element}&navigate=yes&zoom=15`);
+    // window.open(`waze://?q=${element}&zoom=17`);
   }else{ 
     window.open(`waze://?ll=${element}&navigate=yes&zoom=17`);
   }
