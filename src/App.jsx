@@ -317,7 +317,8 @@ function wazeNav(){
     // window.open(`waze://?q=${element}&ll=${userLocation.latitude},${userLocation.longitude}&navigate=yes&z=10`);
     window.open(`waze://?q=${element}&navigate=yes&zoom=17`);
   }else{ 
-    window.open(`waze://?ll=${element}&navigate=yes&zoom=17`);
+    // window.open(`waze://?ll=${element}&navigate=yes&zoom=17`);
+    window.open(`waze://?ll=${element}&zoom=17`);
   }
 }
 
