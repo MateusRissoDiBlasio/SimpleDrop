@@ -1,12 +1,17 @@
 import logo from './imgs/logo-fundo-branco-escrito-em-branco.png';
 import waze from './imgs/logowaze.png';
 import maps from './imgs/logomaps.png';
+import refresh from './imgs/icons/refreshpagetest.png';
 import { useState, useEffect } from 'react';
 import './App.css';
 import * as xlsx from 'xlsx';
 import styled from 'styled-components'
 // import Intro from './NavigationMap';
 import './responsive.css'
+
+import { InputLoec } from './components/inputs';
+import { InputCoord } from './components/inputs';
+
 
 
 export function App() {
@@ -34,40 +39,63 @@ const readUploadLoecFile = (e) => {
       var QtdPontosDeEntrega = [...PontosDeEntrega];
 
       var QtdPontos = QtdPontosDeEntrega.length;
-
-      let Loec = []
-      for (let i = 0 ; i <= QtdPontos; i++){
-      var Pontos = json.filter(ponto => (ponto.GRUPO === i));
-      Loec.push(Pontos)
-      delete Loec[0];
-
-      // console.log(Pontos)
-      }
-
-      let ArrayToDisplay = []
-      for (let i = 1 ; i <= QtdPontos; i++){
-
-      const PontoAtual = Loec[i][0].GRUPO;
-
-      const Endereco = Loec[i][0].ENDEREÇO;
-
-      const Objetosreturn = Loec[i].map(ponto => (ponto.OBJETO));
-
-      const Objetos = Objetosreturn.sort()
-
-      const QtdObjetos = Objetos.length;
       
-      const Coordenadas = Loec[i][0].COORDENADAS;
+      console.log(QtdPontosDeEntrega)
+      console.log(QtdPontos <= 1)
+      console.log(QtdPontos)
 
-      ArrayToDisplay.push([QtdPontos, PontoAtual, Endereco, QtdObjetos, Objetos, Coordenadas ]);
+
+      if(QtdPontos > 1){
+  
+        let Loec = []
+        for (let i = 0 ; i <= QtdPontos; i++){
+        var Pontos = json.filter(ponto => (ponto.GRUPO === i));
+        Loec.push(Pontos)
+        delete Loec[0];
+        }
+       
+      //  MEXER AQUI
+      
+        console.log(Loec[1][0].OBJETO)
+
+        if(Loec[1][0].OBJETO !== undefined){
+          console.log(Loec)
           
+          let ArrayToDisplay = []
+          for (let i = 1 ; i <= QtdPontos; i++){
+
+          const PontoAtual = Loec[i][0].GRUPO;
+
+          const Endereco = Loec[i][0].ENDEREÇO;
+
+          const Objetosreturn = Loec[i].map(ponto => (ponto.OBJETO));
+
+          const Objetos = Objetosreturn.sort()
+
+          const QtdObjetos = Objetos.length;
+          
+          const Coordenadas = Loec[i][0].COORDENADAS;
+
+          ArrayToDisplay.push([QtdPontos, PontoAtual, Endereco, QtdObjetos, Objetos, Coordenadas ]);
+              
+          }
+          setLista([ArrayToDisplay]);
+          console.log(ArrayToDisplay)
+        }else{
+          alert('Arquivo inválido, possível formatação incorreta ou não é arquivo de Loec, confira o arquivo carregado');
+            document.getElementById('uploadLoec').value='';
+            console.log(document.getElementById('uploadLoec').value)
+          }
+    
+      }else if (QtdPontos <= 1){
+        alert('Arquivo inválido, possível formatação incorreta, confira o arquivo carregado');
+        console.log(document.getElementById('uploadLoec').value)
+        document.getElementById('uploadLoec').value='';
+        console.log(document.getElementById('uploadLoec').value)
       }
-      setLista([ArrayToDisplay]);
-      console.log(ArrayToDisplay)
-      
     };
     reader.readAsArrayBuffer(e.target.files[0]);   
-  }      
+  }    
 }
 
 const readUploadCoordenadasFile = (e) => {
@@ -89,33 +117,128 @@ const readUploadCoordenadasFile = (e) => {
 
       var QtdPontos = QtdCoordDeEntrega.length;
 
-      let Loec = []
-      for (let i = 0 ; i <= QtdPontos; i++){
-      var Pontos = coordjson.filter(ponto => (ponto.GRUPO === i));
-      Loec.push(Pontos)
-      delete Loec[0];
+      if(QtdPontos > 1){
 
+        let Loec = []
+        for (let i = 0 ; i <= QtdPontos; i++){
+          var Pontos = coordjson.filter(ponto => (ponto.GRUPO === i));
+          Loec.push(Pontos)
+          delete Loec[0];
+        }
+      console.log(Loec)
+        if(Loec[1][0].COORDENADAS !== undefined){
+
+          let ArrayCoordToDisplay = []
+          for (let i = 1 ; i <= QtdPontos; i++){
+
+            const NumeroDeOrdem = Loec[i][0].GRUPO;
+
+            const Endereco = Loec[i][0].ENDEREÇO;
+            
+            const Coordenadas = Loec[i][0].COORDENADAS;
+
+            ArrayCoordToDisplay.push([NumeroDeOrdem, Endereco, Coordenadas]);
+              
+          }
+          setCoordLista([ArrayCoordToDisplay]);
+          console.log(ArrayCoordToDisplay)
+        }else{
+            alert('Arquivo inválido, possível formatação incorreta ou não é arquivo de Coordenadas, confira o arquivo carregado');
+            document.getElementById('uploadCoord').value='';
+            console.log(document.getElementById('uploadCoord').value)
+        }
+      }else if (QtdPontos <= 1){
+        alert('Arquivo inválido, possível formatação incorreta, confira o arquivo carregado');
+        console.log(document.getElementById('uploadCoord').value)
+        document.getElementById('uploadCoord').value='';
+        console.log(document.getElementById('uploadCoord').value)
       }
-    
-      let ArrayCoordToDisplay = []
-      for (let i = 1 ; i <= QtdPontos; i++){
-
-      const NumeroDeOrdem = Loec[i][0].GRUPO;
-
-      const Endereco = Loec[i][0].ENDEREÇO;
-      
-      const Coordenadas = Loec[i][0].COORDENADAS;
-
-      ArrayCoordToDisplay.push([NumeroDeOrdem, Endereco, Coordenadas]);
-          
-      }
-      setCoordLista([ArrayCoordToDisplay]);
-      console.log(ArrayCoordToDisplay)
-      
     };
     readercoord.readAsArrayBuffer(e.target.files[0]);  
   }
 }
+
+var allowedExtensions = ["ods", "xlsx"];
+console.log(allowedExtensions)
+
+function testLoecFile(e) {
+
+  var loecFileInput = document.getElementById('uploadLoec');
+  var loecFilePath = loecFileInput.value;
+
+  console.log(loecFilePath);
+
+  function getFileExtension(filename) {
+    return filename.split('.').pop();
+  }
+  console.log(getFileExtension(loecFilePath))
+  console.log(loecFilePath.includes(allowedExtensions[0]) || loecFilePath.includes(allowedExtensions[1]))
+  
+  if (loecFilePath.includes(allowedExtensions[0]) || loecFilePath.includes(allowedExtensions[1])){
+
+    readUploadLoecFile(e);
+
+  }else{
+    
+    alert(`Este arquivo de Loec não é válido, tente novamente. \n\nFormatos aceitos:  ${allowedExtensions[0]}  e  ${allowedExtensions[1]}.`);
+    document.getElementById('uploadLoec').value='';
+  
+  }
+}
+
+function testCoordFile(e) {
+
+  var coordFileInput = document.getElementById('uploadCoord');
+  var coordFilePath = coordFileInput.value;
+
+  console.log(coordFilePath);
+
+  function getFileExtension(filename) {
+    return filename.split('.').pop();
+  }
+  console.log(getFileExtension(coordFilePath))
+  if (coordFilePath.includes(allowedExtensions[0]) || coordFilePath.includes(allowedExtensions[1])){
+  
+    readUploadCoordenadasFile(e);
+
+  }else{
+
+    alert(`Este arquivo de Coordenadas não é válido, tente novamente. \n\nFormatos aceitos:  ${allowedExtensions[0]}  e  ${allowedExtensions[1]}.`);
+    document.getElementById('uploadCoord').value='';
+
+  }
+}
+
+
+// INSERINDO TESTE DE EXTENSÃO DE ARQUIVO
+// function fileValidation() {
+// 			var loecFileInput = document.getElementById('uploadLoec');
+// 			var loecFilePath = loecFileInput.value;
+// 			var coordFileInput = document.getElementById('uploadCoord');
+// 			var coordFilePath = coordFileInput.value;
+		
+// 			// Allowing file type
+// 			var allowedExtensions = [".ods", ".xlxs"];
+			
+// 			if (!allowedExtensions.exec(loecFilePath) || !allowedExtensions.exec(coordFilePath)) {
+// 				alert('Este tipo de arquivo não é suportado, verifique a seleção.');
+// 				loecFileInput.value = '';
+//         coordFileInput.value = '';
+// 				return false;
+// 			} 
+// }
+
+// function testLoecFile() {
+
+// fileValidation();
+// readUploadLoecFile();
+// }
+
+// function testCoordFile() {
+
+// fileValidation();
+// readUploadCoordenadasFile();
+// }
 
 
 let compare = []
@@ -335,7 +458,14 @@ return (
     <header className="App-header">
       
       <img src={logo} className='logo' alt="logo" />    
-      <div className='filesselection'>
+    <div className='filesselection'>
+      <InputLoec className="file" type="file" name="uploadLoec" id="uploadLoec" onChange={testLoecFile}></InputLoec>
+      <InputCoord className="file" type="file" name="upload" id="uploadCoord" onChange={testCoordFile}></InputCoord>
+      {/* <InputLoec className="file" type="file" name="uploadLoec" id="uploadLoec" onChange={readUploadLoecFile}></InputLoec>
+      <InputCoord className="file" type="file" name="upload" id="uploadCoord" onChange={readUploadCoordenadasFile}></InputCoord> */}
+    </div>
+    
+      {/* <div className='filesselection'>
         <form>
             <label htmlFor="upload">Importar LOEC</label>
             
@@ -356,17 +486,17 @@ return (
                 onChange={readUploadCoordenadasFile}
             />
         </form>
-      </div>      
-      <button onClick={refreshPage}>Recarregar Página</button>
+      </div>       */}
+      <button className="container-btn-file-blue" onClick={refreshPage}> <img src={refresh} alt="refreshlogo" />Recarregar Página</button>
 
     </header>
       
     <div className='App-body'>
 
-      <div>
+      
         {lista.length !== 0 && coordLista.length !== 0 ?
           
-        <div>
+        <div className='screen'>
           
             <div className='nav'>
               <button className='nextPrev' disabled={index === 0 ? true : false} onClick={() => setIndex(index - 1)}>Ponto de entrega Anterior</button>
@@ -399,7 +529,7 @@ return (
                 
                 <h4>  Endereço: {listaDeEntrega[index][0]}</h4>
 
-                {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo<br></br>de coordenadas, coordenadas baseadas<br></br>pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
+                {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo de coordenadas,<br></br>coordenadas baseadas pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
               
                 <h2>Escolha o App de Navegação:</h2>
                 <div className='navapps'>
@@ -413,7 +543,7 @@ return (
 
             : <h4> CARREGA A LISTA ANIMAL</h4>}
             
-      </div>
+      
         {/* {lista.length !== 0 && coordLista.length !== 0 ? <Intro key={index} /> : ''} */}
     </div>
   </div>
@@ -422,12 +552,13 @@ return (
 
 const UlObjetos = styled.ul`
   
-  display: grid;
+  // display: grid;
   grid-template-columns: 140px;
   overflow-y: auto;
+  overflow-x: hidden;
   min-height: 40px;
   max-height: 120px; 
-  width: 160px;
+  width: 170px;
   border-radius: 5px;
   padding: 10px 20px 10px 40px;
 
@@ -438,6 +569,8 @@ const UlObjetos = styled.ul`
   li {
     text-align: center;
     font-size: 1rem;
+    width: 140px;
+    margin-left: 10px;
     // list-style: none;
     list-style: decimal;
     font-family: "Roboto", sans-serif;
@@ -445,9 +578,7 @@ const UlObjetos = styled.ul`
   }
   
   @media screen and (min-width: 375px) {
-    max-height: 85px; 
+    height: 68px;
   }
-
-
 `
 export default App;
