@@ -83,12 +83,14 @@ const readUploadLoecFile = (e) => {
           setLista([ArrayToDisplay]);
           console.log(ArrayToDisplay)
         }else{
+          setDisabled(false);
           alert('Arquivo inválido, possível formatação incorreta ou não é arquivo de Loec, confira o arquivo carregado');
             document.getElementById('uploadLoec').value='';
             console.log(document.getElementById('uploadLoec').value)
           }
     
       }else if (QtdPontos <= 1){
+        setDisabled(false);
         alert('Arquivo inválido, possível formatação incorreta, confira o arquivo carregado');
         console.log(document.getElementById('uploadLoec').value)
         document.getElementById('uploadLoec').value='';
@@ -144,11 +146,13 @@ const readUploadCoordenadasFile = (e) => {
           setCoordLista([ArrayCoordToDisplay]);
           console.log(ArrayCoordToDisplay)
         }else{
+            setDisabled(false);
             alert('Arquivo inválido, possível formatação incorreta ou não é arquivo de Coordenadas, confira o arquivo carregado');
             document.getElementById('uploadCoord').value='';
             console.log(document.getElementById('uploadCoord').value)
         }
       }else if (QtdPontos <= 1){
+        setDisabled(false);
         alert('Arquivo inválido, possível formatação incorreta, confira o arquivo carregado');
         console.log(document.getElementById('uploadCoord').value)
         document.getElementById('uploadCoord').value='';
@@ -562,7 +566,7 @@ return (
               
               <div className='navinfo'>
                 
-                  <h6>Endereço: <h4>{listaDeEntrega[index][0]}</h4> </h6>
+                  <h6>Endereço: <p className='endereco'>{listaDeEntrega[index][0]}</p> </h6>
 
                 {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo de coordenadas,<br></br>coordenadas baseadas pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
               
@@ -615,11 +619,11 @@ const UlObjetos = styled.ul`
   }
   
   @media screen and (min-width: 375px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 68px;
-
-    li{
-      margin-left: 20px;
-    }
+       
   }
 `
 export default App;

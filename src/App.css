@@ -96,7 +96,7 @@ input{
   display: flex;
   flex-direction: row;
   height: 40px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   align-items: center;
   gap: 10px;
   h4{
@@ -188,6 +188,13 @@ input{
     align-items: center;
     justify-content: center;
   }
+  p{
+    margin: 4px;
+  }
+}
+
+.endereco{
+  font-size: 16px;
 }
 
 
