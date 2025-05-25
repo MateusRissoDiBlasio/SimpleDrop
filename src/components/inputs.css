@@ -51,7 +51,7 @@
   background-color: #0d73a8ff;
   color: #fff;
   border-style: none;
-  padding: 1.65em 1.0em;
+  padding: 1.65em 0.8em;
   margin: 1.5px;
   border-radius: 0.5em;
   overflow: hidden;
@@ -59,8 +59,12 @@
   box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
   transition: all 250ms;
   height: 30px;
-  width: 180px;
+  width: 130px;
   cursor: pointer;
+
+  #setas{
+    transform-origin: center;
+  }
 }
 .container-btn-file-blue button{
   position: absolute;
@@ -72,7 +76,7 @@
 .container-btn-file-blue > svg {
   /* margin-right: 1em; */
   margin-right: 0.4em;
-  margin-left: 0.4em;
+  /* margin-left: 0.4em; */
 }
 .container-btn-file-blue::before {
   content: "";
@@ -87,3 +91,31 @@
 .container-btn-file-blue:hover::before {
   width: 100%;
 }
+
+.selected, .container-btn-file-blue:hover{
+
+  /* #Capa_1{
+    transform-origin: 50% 50%;
+    animation: spin 4s;
+  }   */
+  #setas{
+    transform-origin: 52.5% 57.5%;
+    animation: spin 1s forwards ease infinite;
+  }
+  
+  
+}
+
+@keyframes spin {
+
+  0% {
+    transform: rotate(0deg);
+    fill: white;
+  }
+
+  100% {  
+    transform: rotate(360deg);
+    fill: white;
+  }
+}
+

@@ -1,7 +1,7 @@
 import logo from './imgs/logo-fundo-branco-escrito-em-branco.png';
 import waze from './imgs/logowaze.png';
 import maps from './imgs/logomaps.png';
-import refresh from './imgs/icons/refreshpagetest.png';
+// import refresh from './imgs/icons/refreshpagetest.png';
 import { useState, useEffect } from 'react';
 import './App.css';
 import * as xlsx from 'xlsx';
@@ -11,6 +11,8 @@ import './responsive.css'
 
 import { InputLoec } from './components/inputs';
 import { InputCoord } from './components/inputs';
+
+// import Boxcalc from './components/boxcalc';
 
 
 
@@ -429,8 +431,10 @@ if (lista.length !== 0 && coordLista.length !== 0){
   }
 }
 
+const refreshAnimation = document.getElementById('Capa_1');
 function refreshPage(){
-  window.location.reload(false)
+  refreshAnimation.classList.add('selected')
+  setTimeout(() => {window.location.reload(false)},1000)
 };
 
 function wazeNav(){
@@ -487,7 +491,35 @@ return (
             />
         </form>
       </div>       */}
-      <button className="container-btn-file-blue" onClick={refreshPage}> <img src={refresh} alt="refreshlogo" />Recarregar Página</button>
+      <button className="container-btn-file-blue" onClick={refreshPage}> 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlSpace="preserve"
+          id="Capa_1"
+          width="45"
+          height="45"
+          version="1.1"
+          viewBox="0 0 50.926 49.024"
+        >
+          <g id="setas">
+            <path
+              id="seta-baixo"
+              d="m35.801 32.734-1.654-1.07a.68.68 0 0 0-.917.167 7.2 7.2 0 0 1-5.847 2.954c-1.94 0-3.8-.777-5.152-2.14l.529-.175a.682.682 0 0 0 .239-1.153l-3.78-3.369a.69.69 0 0 0-.666-.138.68.68 0 0 0-.452.508l-1.028 4.958a.682.682 0 0 0 .88.783l.878-.29c2.011 2.762 5.12 4.342 8.552 4.342 3.402 0 6.617-1.649 8.601-4.41a.682.682 0 0 0-.183-.967"
+            ></path>
+            <path
+              id="seta-cima"
+              d="M36.425 22.573a.69.69 0 0 0-.665-.138l-.879.29c-2.011-2.762-5.12-4.342-8.552-4.342a10.61 10.61 0 0 0-8.601 4.41.683.683 0 0 0 .183.967l1.654 1.07a.677.677 0 0 0 .916-.167 7.2 7.2 0 0 1 5.848-2.954c1.939 0 3.8.777 5.152 2.14l-.53.175a.68.68 0 0 0-.238 1.153l3.78 3.369a.679.679 0 0 0 1.118-.37l1.027-4.958a.68.68 0 0 0-.213-.645"
+            ></path>
+          </g>
+          <path
+            id="tela"
+            d="M48.472 2.464H5.24a2.956 2.956 0 0 0-2.953 2.953v38.732a2.956 2.956 0 0 0 2.953 2.953h43.232a2.956 2.956 0 0 0 2.952-2.953V5.417a2.956 2.956 0 0 0-2.952-2.953m-8.903 4.958c0-.602.488-1.09 1.09-1.09h1.09c.603 0 1.09.488 1.09 1.09v1.236a1.09 1.09 0 0 1-1.09 1.09h-1.09a1.09 1.09 0 0 1-1.09-1.09zm-5.07 0c0-.602.488-1.09 1.09-1.09h1.09c.602 0 1.09.488 1.09 1.09v1.236a1.09 1.09 0 0 1-1.09 1.09h-1.09a1.09 1.09 0 0 1-1.09-1.09zM47.88 43.558H5.83V13.024h42.05zm.028-34.9a1.09 1.09 0 0 1-1.09 1.09h-1.09a1.09 1.09 0 0 1-1.09-1.09V7.422c0-.602.488-1.09 1.09-1.09h1.09c.602 0 1.09.488 1.09 1.09z"
+          >
+          </path>
+        </svg>
+        {/* <img src={refresh} alt="refreshlogo" /> */}
+        Recarregar Página
+      </button>
 
     </header>
       
@@ -542,6 +574,8 @@ return (
           </div>
 
             : <h4> CARREGA A LISTA ANIMAL</h4>}
+
+            {/* <Boxcalc /> */}
             
       
         {/* {lista.length !== 0 && coordLista.length !== 0 ? <Intro key={index} /> : ''} */}
