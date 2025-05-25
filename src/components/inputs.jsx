@@ -33,7 +33,7 @@ export function InputLoec(props){
         20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
         ></path>
     </svg>
-    {props.disabled === false ? 'Importar Loec' : 'Aguarde'}
+    {props.disabled === false ? 'Importar Loec' : <p className='loading'>Aguarde</p>}
     <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -92,7 +92,7 @@ export function InputCoord(props){
         20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
         ></path>
     </svg>
-    {props.disabled === false ? 'Importar Coordenadas' : 'Aguarde'}
+    {props.disabled === false ? 'Importar Coordenadas' : <p className='loading'>Aguarde</p>}
     <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"

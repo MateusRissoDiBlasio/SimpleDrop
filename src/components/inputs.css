@@ -15,7 +15,7 @@
   box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
   transition: all 250ms;
   height: 30px;
-  width: 180px;
+  width: 170px;
 }
 .container-btn-file input[type="file"] {
   position: absolute;

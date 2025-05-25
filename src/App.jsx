@@ -180,7 +180,7 @@ function testLoecFile(e) {
   if (loecFilePath.includes(allowedExtensions[0]) || loecFilePath.includes(allowedExtensions[1])){
     setDisabled(true);
     readUploadLoecFile(e);
-    setTimeout(() => {setDisabled(false)},2000);
+    setTimeout(() => {setDisabled(false)},4000);
 
   }else{
     
@@ -204,7 +204,7 @@ function testCoordFile(e) {
   if (coordFilePath.includes(allowedExtensions[0]) || coordFilePath.includes(allowedExtensions[1])){
     setDisabled(true);
     readUploadCoordenadasFile(e);
-    setTimeout(() => {setDisabled(false)},1000);
+    setTimeout(() => {setDisabled(false)},2000);
   }else{
 
     alert(`Este arquivo de Coordenadas não é válido, tente novamente. \n\nFormatos aceitos:  ${allowedExtensions[0]}  e  ${allowedExtensions[1]}.`);
@@ -562,7 +562,7 @@ return (
               
               <div className='navinfo'>
                 
-                <h4>  Endereço: <br></br>{listaDeEntrega[index][0]}</h4>
+                  <h6>Endereço: <h4>{listaDeEntrega[index][0]}</h4> </h6>
 
                 {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo de coordenadas,<br></br>coordenadas baseadas pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
               
@@ -598,7 +598,7 @@ const UlObjetos = styled.ul`
   width: 170px;
   border-radius: 5px;
   padding: 10px 20px 10px 40px;
-
+  margin-block-end: 0;
   background-color: grey;
   justify-self: center;
   justify-content: space-between;
@@ -618,7 +618,7 @@ const UlObjetos = styled.ul`
     height: 68px;
 
     li{
-      margin-left: 15px;
+      margin-left: 20px;
     }
   }
 `
