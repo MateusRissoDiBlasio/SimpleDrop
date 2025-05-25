@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/SimpleDrop/static/css/main.f18aab5d.css",
-    "main.js": "/SimpleDrop/static/js/main.f60fa0d9.js",
+    "main.css": "/SimpleDrop/static/css/main.0e2021d0.css",
+    "main.js": "/SimpleDrop/static/js/main.eb294d36.js",
     "static/js/453.50209722.chunk.js": "/SimpleDrop/static/js/453.50209722.chunk.js",
     "static/media/logo-fundo-branco-escrito-em-branco.png": "/SimpleDrop/static/media/logo-fundo-branco-escrito-em-branco.6ab6eecb8aa621d1df54.png",
     "static/media/logomaps.png": "/SimpleDrop/static/media/logomaps.ad64b7b76061b9afdc35.png",
     "static/media/logowaze.png": "/SimpleDrop/static/media/logowaze.22842786a7785cf83be2.png",
     "index.html": "/SimpleDrop/index.html",
-    "main.f18aab5d.css.map": "/SimpleDrop/static/css/main.f18aab5d.css.map",
-    "main.f60fa0d9.js.map": "/SimpleDrop/static/js/main.f60fa0d9.js.map",
+    "main.0e2021d0.css.map": "/SimpleDrop/static/css/main.0e2021d0.css.map",
+    "main.eb294d36.js.map": "/SimpleDrop/static/js/main.eb294d36.js.map",
     "453.50209722.chunk.js.map": "/SimpleDrop/static/js/453.50209722.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f18aab5d.css",
-    "static/js/main.f60fa0d9.js"
+    "static/css/main.0e2021d0.css",
+    "static/js/main.eb294d36.js"
   ]
 }
