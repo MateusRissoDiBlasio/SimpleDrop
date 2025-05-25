@@ -611,7 +611,7 @@ const UlObjetos = styled.ul`
     text-align: center;
     font-size: 1rem;
     width: 140px;
-    margin-left: 10px;
+    margin-left: 20px;
     // list-style: none;
     list-style: decimal;
     font-family: "Roboto", sans-serif;
