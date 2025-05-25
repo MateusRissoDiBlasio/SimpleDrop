@@ -3,6 +3,7 @@ import './inputs.css';
 export function InputLoec(props){
 
     return(
+      
     <button className="container-btn-file">
     <svg
         fill="#fff"
@@ -32,7 +33,7 @@ export function InputLoec(props){
         20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
         ></path>
     </svg>
-    Importar Loec
+    {props.disabled === false ? 'Importar Loec' : 'Aguarde'}
     <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -54,7 +55,7 @@ export function InputLoec(props){
       ></image>
     </g>
     </svg>
-    <input className="file" type={props.type} name={props.name} id={props.id} onChange={props.onChange} />
+    <input className="file" disabled={props.disabled} type={props.type} name={props.name} id={props.id} onChange={props.onChange} />
     </button>
 );
 }
@@ -66,7 +67,7 @@ export function InputCoord(props){
     <svg
         fill="#fff"
         xmlns="http://www.w3.org/2000/svg"
-        width="20"
+        width="30.8"
         height="20"
         viewBox="0 0 50 50"
     >
@@ -91,12 +92,12 @@ export function InputCoord(props){
         20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
         ></path>
     </svg>
-    Importar <br></br> Coordenadas
+    {props.disabled === false ? 'Importar Coordenadas' : 'Aguarde'}
     <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     id="svg1"
-    width="25"
+    width="38.35"
     height="30"
     version="1.1"
     viewBox="0 0 130 145"
@@ -113,7 +114,7 @@ export function InputCoord(props){
       ></image>
     </g>
     </svg>
-    <input className="file" type={props.type} name={props.name} id={props.id} onChange={props.onChange}/>
+    <input className="file" disabled={props.disabled} type={props.type} name={props.name} id={props.id} onChange={props.onChange}/>
     </button>
 
 );

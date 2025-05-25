@@ -56,7 +56,6 @@ const readUploadLoecFile = (e) => {
         delete Loec[0];
         }
        
-      //  MEXER AQUI
       
         console.log(Loec[1][0].OBJETO)
 
@@ -163,6 +162,8 @@ const readUploadCoordenadasFile = (e) => {
 var allowedExtensions = ["ods", "xlsx"];
 console.log(allowedExtensions)
 
+const [disabled, setDisabled] = useState(false);
+
 function testLoecFile(e) {
 
   var loecFileInput = document.getElementById('uploadLoec');
@@ -177,8 +178,9 @@ function testLoecFile(e) {
   console.log(loecFilePath.includes(allowedExtensions[0]) || loecFilePath.includes(allowedExtensions[1]))
   
   if (loecFilePath.includes(allowedExtensions[0]) || loecFilePath.includes(allowedExtensions[1])){
-
+    setDisabled(true);
     readUploadLoecFile(e);
+    setTimeout(() => {setDisabled(false)},2000);
 
   }else{
     
@@ -200,9 +202,9 @@ function testCoordFile(e) {
   }
   console.log(getFileExtension(coordFilePath))
   if (coordFilePath.includes(allowedExtensions[0]) || coordFilePath.includes(allowedExtensions[1])){
-  
+    setDisabled(true);
     readUploadCoordenadasFile(e);
-
+    setTimeout(() => {setDisabled(false)},1000);
   }else{
 
     alert(`Este arquivo de Coordenadas não é válido, tente novamente. \n\nFormatos aceitos:  ${allowedExtensions[0]}  e  ${allowedExtensions[1]}.`);
@@ -463,8 +465,8 @@ return (
       
       <img src={logo} className='logo' alt="logo" />    
     <div className='filesselection'>
-      <InputLoec className="file" type="file" name="uploadLoec" id="uploadLoec" onChange={testLoecFile}></InputLoec>
-      <InputCoord className="file" type="file" name="upload" id="uploadCoord" onChange={testCoordFile}></InputCoord>
+      <InputLoec disabled={disabled} className="file" type="file" name="uploadLoec" id="uploadLoec" onChange={testLoecFile}></InputLoec>
+      <InputCoord disabled={disabled} className="file" type="file" name="upload" id="uploadCoord" onChange={testCoordFile}></InputCoord>
       {/* <InputLoec className="file" type="file" name="uploadLoec" id="uploadLoec" onChange={readUploadLoecFile}></InputLoec>
       <InputCoord className="file" type="file" name="upload" id="uploadCoord" onChange={readUploadCoordenadasFile}></InputCoord> */}
     </div>
@@ -539,8 +541,9 @@ return (
             <div className='info'>                
               <div className='pontos'>   
 
-                <h4>  Pontos de entrega: </h4> <h2>{lista[0][index][0]} </h2>
-                <h4>  Ponto de entrega: </h4> <h2>{lista[0][index][1]} </h2>
+                <h4>  Ponto de entrega </h4> <h2>{lista[0][index][1]}</h2> <h4>de</h4> <h2>{lista[0][index][0]} </h2>
+                {/* <h4>  Pontos de entrega: </h4> <h2>{lista[0][index][0]} </h2>
+                <h4>  Ponto de entrega: </h4> <h2>{lista[0][index][1]} </h2> */}
                 
               </div> 
               <div className='objetos'>
@@ -559,7 +562,7 @@ return (
               
               <div className='navinfo'>
                 
-                <h4>  Endereço: {listaDeEntrega[index][0]}</h4>
+                <h4>  Endereço: <br></br>{listaDeEntrega[index][0]}</h4>
 
                 {endcoord === undefined ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo de coordenadas,<br></br>coordenadas baseadas pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
               
@@ -613,6 +616,10 @@ const UlObjetos = styled.ul`
   
   @media screen and (min-width: 375px) {
     height: 68px;
+
+    li{
+      margin-left: 15px;
+    }
   }
 `
 export default App;
