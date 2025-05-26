@@ -619,7 +619,7 @@ const UlObjetos = styled.ul`
   }
   
   @media screen and (min-width: 375px) {
-    display: flex;
+    // display: flex;
     flex-direction: column;
     align-items: center;
     height: 68px;
