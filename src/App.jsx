@@ -1,4 +1,5 @@
-import logo from './imgs/logo-fundo-branco-escrito-em-branco.png';
+import Logo from './components/logoanimation/logo';
+import'./components/logoanimation/animation.css'
 import waze from './imgs/logowaze.png';
 import maps from './imgs/logomaps.png';
 // import refresh from './imgs/icons/refreshpagetest.png';
@@ -467,7 +468,8 @@ return (
     {/* <h1>just testing</h1> */}
     <header className="App-header">
       
-      <img src={logo} className='logo' alt="logo" />    
+      {/* <img src={logo} className='logo' alt="logo" />     */}
+      <Logo />
     <div className='filesselection'>
       <InputLoec disabled={disabled} className="file" type="file" name="uploadLoec" id="uploadLoec" onChange={testLoecFile}></InputLoec>
       <InputCoord disabled={disabled} className="file" type="file" name="upload" id="uploadCoord" onChange={testCoordFile}></InputCoord>

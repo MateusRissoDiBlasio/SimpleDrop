@@ -205,7 +205,8 @@ input{
   align-items: center;
   margin-top: 10px;
   img{
-    width: 80px; 
+    width: 80px;
+    filter: drop-shadow(2px 5px 3px #000);
   } 
 }
 

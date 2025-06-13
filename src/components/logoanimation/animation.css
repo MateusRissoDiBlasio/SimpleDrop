@@ -1,0 +1,197 @@
+body{
+    background-color: #282c34;
+}
+
+#svg1{
+    #logo{
+        /* display:none; */
+        opacity: 0;
+        animation: logoreveal 0.7s 3.5s forwards;
+    }
+
+    #fundo-branco{
+        /* display:none; */
+        opacity: 0;
+        animation: fundologo 1s 3.2s forwards;
+    }
+
+    #correios-branca{
+        /* display:none; */
+        opacity: 0;
+        animation: logoreveal2 0.5s 3.5s forwards;
+    }
+
+    #direita-alto{
+        /* display: none; */
+        fill: #282c34;
+        transform: translate(-4px, 5.5px);
+        animation: shadoweasein2 2.5s forwards, logorightrise 2s 2.5s ease-in-out forwards, logoreveal 0s 4s forwards, logoright 2s 2s forwards, shadoweaseout2 1.5s 4.5s forwards;
+        
+    }
+
+    #esquerda-baixo{
+        /* display: none; */
+        fill: #282c34;
+        transform: translate(4px, -5.5px);
+        animation: shadoweasein 2.5s forwards, logoleftrise 2s 2.5s ease-in-out forwards, logoreveal 0s 4s forwards, logoleft 2s 2s forwards, shadoweaseout 1.5s 4.5s forwards;
+    }
+}
+
+@keyframes logoright{
+
+    0%{
+        fill: white;
+        transform: translate(-4px, 5.5px);
+    }
+
+    100%{
+        fill: white;
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes logoleft{
+
+    0%{
+        fill: white;
+        transform: translate(4px, -5.5px);
+    }
+
+    100%{
+        fill: white;
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes logoleftrise{
+
+    0%{
+        transform: translate(3px, -4.5px);
+        /* filter: drop-shadow(0px 0px 0px #282c34); */
+        /* filter: drop-shadow(-1.1px 1px 0.5px black); */
+        
+        
+    }
+
+    100%{
+        transform: translate(4px, -5.5px);
+        /* filter: drop-shadow(-0.005px 0px 0px black); */
+        /* filter: drop-shadow(-1.1px 1px 0.5px black); */
+        
+    }
+}
+
+@keyframes logorightrise{
+
+    0%{
+        transform: translate(-4px, 6.5px);
+        /* filter: drop-shadow(0px 0px 0px #282c34); */
+        /* filter: drop-shadow(1px -1.1px 0.5px black);
+        opacity: 0; */
+    }
+
+    100%{
+        transform: translate(-4px, 5.5px);
+        /* filter: drop-shadow(1px -1.1px 0.5px black);
+        opacity: 1; */
+    }
+}
+
+@keyframes fundologo{
+
+    0%{
+        fill: white;
+        opacity: 0;
+    }
+
+    100%{
+        display: initial;
+        opacity: 1;
+        fill: white;
+    }
+
+}
+
+@keyframes logoreveal{
+
+    0%{
+        opacity: 0;
+        fill: white;
+    }
+
+    100%{
+        fill: white;
+        opacity: 1;
+    }
+
+}
+
+@keyframes logoreveal2{
+
+    0%{
+        fill: white;
+        opacity: 0;
+    }
+
+    100%{
+        fill: white;
+        opacity: 1;
+    }
+
+}
+
+@keyframes shadoweasein{
+
+    0%{
+        opacity: 0;
+        filter: drop-shadow(-0.005px 1px 0px black);
+        
+    }
+
+    100%{
+        opacity: 1;
+        filter: drop-shadow(-0.005px 1px 0px black);
+        
+    }
+
+}
+
+@keyframes shadoweaseout{
+
+    0%{
+        filter: drop-shadow(-0.005px 1px 0px black);
+    }
+
+    100%{
+        filter: drop-shadow(-0.005px 1px 0px black);
+        opacity: 0;
+    }
+
+}
+
+@keyframes shadoweasein2{
+
+    0%{
+        filter: drop-shadow(0.005px 0px 0px black);
+        opacity: 0;
+    }
+
+    100%{
+        filter: drop-shadow(0.005px 0px 0px black);
+        opacity: 1;
+    }
+
+}
+
+@keyframes shadoweaseout2{
+
+    0%{
+        filter: drop-shadow(0.005px 0px 0px black);
+    }
+
+    100%{
+        filter: drop-shadow(0.005px 0px 0px black);
+        opacity: 0;
+    }
+
+}
