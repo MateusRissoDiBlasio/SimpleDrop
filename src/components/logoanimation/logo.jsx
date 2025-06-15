@@ -3,7 +3,7 @@ const Logo = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     xmlSpace="preserve"
-    id="svg1"
+    id="svgLogoCorreios"
     width="170mm"
     height="50mm"
     version="1.1"

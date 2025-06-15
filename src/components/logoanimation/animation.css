@@ -2,30 +2,31 @@ body{
     background-color: #282c34;
 }
 
-#svg1{
+#svgLogoCorreios{
+    width: 300px;
     #logo{
         /* display:none; */
         opacity: 0;
-        animation: logoreveal 0.7s 4.7s forwards;
+        animation: logoreveal 0.7s 3.7s forwards;
     }
 
     #fundo-branco{
         /* display:none; */
         opacity: 0;
-        animation: fundologo 1s 4.7s forwards;
+        animation: fundologo 1s 3.7s forwards;
     }
 
     #correios-branca{
         /* display:none; */
         opacity: 0;
-        animation: logoreveal2 0.5s 4.7s forwards;
+        animation: logoreveal2 0.5s 3.7s forwards;
     }
 
     #direita-alto{
         /* display: none; */
         fill: #282c34;
         transform: translate(58px, 5.6px);
-        animation: shadoweasein2 2.5s forwards, backtoleft2 1s 2.5s ease-in-out forwards, logoreveal 0s 3.5s forwards, logoright 2s 3.5s forwards, shadoweaseout2 1.5s 5s forwards;
+        animation: shadoweasein2 1.5s forwards, backtoleft2 1s 1.5s ease-in-out forwards, logoreveal 0s 2.5s forwards, logoright 2s 2.5s forwards, shadoweaseout2 1.5s 4s forwards;
         
     }
 
@@ -33,7 +34,7 @@ body{
         /* display: none; */
         fill: #282c34;
         transform: translate(64px, -5.5px);
-        animation: shadoweasein 2.5s forwards, backtoleft 1s 2.5s ease-in-out forwards, logoreveal 0s 3.5s forwards, logoleft 2s 3.5s forwards, shadoweaseout 1.5s 5s forwards;
+        animation: shadoweasein 1.5s forwards, backtoleft 1s 1.5s ease-in-out forwards, logoreveal 0s 2.5s forwards, logoleft 2s 2.5s forwards, shadoweaseout 1.5s 4s forwards;
     }
 }
 
@@ -157,13 +158,13 @@ body{
 
     0%{
         opacity: 0;
-        filter: drop-shadow(-0.005px 1px 0px black);
+        filter: drop-shadow(-1.5px 1px 0px black);
         
     }
 
     100%{
         opacity: 1;
-        filter: drop-shadow(-0.005px 1px 0px black);
+        filter: drop-shadow(-1.5px 1px 0px black);
         
     }
 
