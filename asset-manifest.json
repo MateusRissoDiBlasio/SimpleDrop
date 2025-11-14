@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/SimpleDrop/static/css/main.e0468b2e.css",
-    "main.js": "/SimpleDrop/static/js/main.828a8c87.js",
+    "main.css": "/SimpleDrop/static/css/main.bac9563d.css",
+    "main.js": "/SimpleDrop/static/js/main.48d04ab1.js",
     "static/js/453.50209722.chunk.js": "/SimpleDrop/static/js/453.50209722.chunk.js",
     "static/media/MAPA-BAIRRO-CENTRO-SUIÇO.png": "/SimpleDrop/static/media/MAPA-BAIRRO-CENTRO-SUIÇO.b4ed90fc885525927bcd.png",
     "static/media/logomaps.png": "/SimpleDrop/static/media/logomaps.ad64b7b76061b9afdc35.png",
     "static/media/logowaze.png": "/SimpleDrop/static/media/logowaze.22842786a7785cf83be2.png",
     "index.html": "/SimpleDrop/index.html",
-    "main.e0468b2e.css.map": "/SimpleDrop/static/css/main.e0468b2e.css.map",
-    "main.828a8c87.js.map": "/SimpleDrop/static/js/main.828a8c87.js.map",
+    "main.bac9563d.css.map": "/SimpleDrop/static/css/main.bac9563d.css.map",
+    "main.48d04ab1.js.map": "/SimpleDrop/static/js/main.48d04ab1.js.map",
     "453.50209722.chunk.js.map": "/SimpleDrop/static/js/453.50209722.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0468b2e.css",
-    "static/js/main.828a8c87.js"
+    "static/css/main.bac9563d.css",
+    "static/js/main.48d04ab1.js"
   ]
 }
