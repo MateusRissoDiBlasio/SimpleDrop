@@ -73,6 +73,8 @@
         color: white;
       
       } 
+
+
       
       @keyframes App-logo-spin {
         from {
@@ -95,7 +97,7 @@
       .info{
         display: flex;
         /* height: 75vh; */
-        width: 300px;
+        width: 360px;
         margin-top: 5px;
         flex-direction: column;
         align-items: center;
@@ -162,17 +164,22 @@
       }
       
       .nav{
+        display: flex;
+        align-items: center;
         height: 50px;
+        margin-top: 10px;
+        gap: 5px;
         /* height: 10vh; */
         /* margin-bottom: 0; */
         align-content: center;
       }
       
       .nextPrev{
-        width:120px;  
-        margin-right: 10px;
-        margin-left: 10px;
-        
+        width:100px;  
+        margin: 0px;
+        font-size: 11px;
+        padding: 2px;
+        height: 36px;
       }
       
       .directions{
@@ -209,7 +216,7 @@
       
       }
       .navinfo{
-        width:100vw;
+        width:95vw;
       }    
 
 }
