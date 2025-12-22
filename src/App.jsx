@@ -27,7 +27,7 @@ import { Page, Text, View, Image, Document, StyleSheet, PDFDownloadLink } from '
 
 export function App() {
 
-  let mapBairro = [{id: BRAUNES, download: '/mapsDownload/306/BRAUNES.svg'}, {id: SUICO, download: '/mapsDownload/306/SUICO.svg'}]
+  let mapBairro = [{id: BRAUNES, download: './mapsDownload/306/BRAUNES.svg'}, {id: SUICO, download: './mapsDownload/306/SUICO.svg'}]
 
   const [lista, setLista] = useState([]);
   const [coordLista, setCoordLista] = useState([]);
@@ -238,7 +238,7 @@ export function App() {
     if (loecFilePath.includes(allowedExtensions[0]) || loecFilePath.includes(allowedExtensions[1])){
       setDisabled(true);
       readUploadLoecFile(e);
-      setTimeout(() => {setDisabled(false)},4000);
+      setTimeout(() => {setDisabled(false)},2000);
 
     }else{
       
@@ -468,7 +468,7 @@ const MyDocument = () => (
 );
 
 var ListaButton = () => (
-      <PDFDownloadLink style={{padding: 12, fontSize: 16, fontWeight: 500, textDecoration: 'none', color: 'white'}} document={<MyDocument />} fileName={filename}>
+      <PDFDownloadLink style={{paddingRight: 8, paddingLeft: 8, fontSize: 16, fontWeight: 500, textDecoration: 'none', color: 'white'}} document={<MyDocument />} fileName={filename}>
         <p style={{display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center', marginTop: 0}}>Gerar Lista<PdfIcon /></p>
       </PDFDownloadLink>
       );
@@ -862,6 +862,10 @@ const UlRuas = styled.ul`
       font-size: 0.8rem;
       width: 300px;
     }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
   }
 `
 export default App;
