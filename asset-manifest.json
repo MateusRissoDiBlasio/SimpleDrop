@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/SimpleDrop/static/css/main.77dc5d76.css",
-    "main.js": "/SimpleDrop/static/js/main.900c1f10.js",
+    "main.css": "/SimpleDrop/static/css/main.c6c09d85.css",
+    "main.js": "/SimpleDrop/static/js/main.16112a8b.js",
     "static/js/453.aad93f53.chunk.js": "/SimpleDrop/static/js/453.aad93f53.chunk.js",
     "static/media/BRAUNES.png": "/SimpleDrop/static/media/BRAUNES.e5bd938eaf8cb80827b7.png",
     "static/media/SUICO.png": "/SimpleDrop/static/media/SUICO.b4ed90fc885525927bcd.png",
     "static/media/logomaps.png": "/SimpleDrop/static/media/logomaps.ad64b7b76061b9afdc35.png",
     "static/media/logowaze.png": "/SimpleDrop/static/media/logowaze.22842786a7785cf83be2.png",
     "index.html": "/SimpleDrop/index.html",
-    "main.77dc5d76.css.map": "/SimpleDrop/static/css/main.77dc5d76.css.map",
-    "main.900c1f10.js.map": "/SimpleDrop/static/js/main.900c1f10.js.map",
+    "main.c6c09d85.css.map": "/SimpleDrop/static/css/main.c6c09d85.css.map",
+    "main.16112a8b.js.map": "/SimpleDrop/static/js/main.16112a8b.js.map",
     "453.aad93f53.chunk.js.map": "/SimpleDrop/static/js/453.aad93f53.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.77dc5d76.css",
-    "static/js/main.900c1f10.js"
+    "static/css/main.c6c09d85.css",
+    "static/js/main.16112a8b.js"
   ]
 }
