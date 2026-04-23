@@ -237,6 +237,7 @@ input{
   color: red; 
   max-width: 260px;
   margin-bottom: 0;
+  font-size: 14px;
 }
 
 .noCoord:nth-child(2){

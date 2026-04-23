@@ -335,14 +335,20 @@
         .noCoord{
             margin-top: 0;
             line-height: 25px;
-            height: 50px;
+            height: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            svg{
+              width: 30px;
+              transform: translate(0, 2px);
+            }
         }
 
         .noCoord:first-child{
-            max-width: 385px;
+            max-width: 500px;
             margin-top: 0;
             line-height: 25px;
-            height: 50px;
+            height: 30px;
         }
 
         .click{

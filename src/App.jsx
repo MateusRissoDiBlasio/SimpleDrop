@@ -9,6 +9,8 @@ import FileDownloadIcon from './components/downloadicon.jsx';
 import checkbox from './imgs/checkbox.png';
 import SUICO from './imgs/maps/306/SUICO.png'
 import BRAUNES from './imgs/maps/306/BRAUNES.png'
+// import Barcode from 'react-barcode';
+import BarcodeForPDF from './components/barcodecomponent.jsx';
 
 
 import { useState, useEffect } from 'react';
@@ -40,6 +42,8 @@ export function App() {
   const year = String(today.getFullYear());
   var filename = "Lista - " + year + "-" + month + "-" + date;
 
+  var currentDate = date + '/' + month + '/' + year;
+
   const [showContent, setShowContent] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   
@@ -53,8 +57,10 @@ export function App() {
           setTimeout(() => {;
             window.scrollTo(
               {
-                behavior: 'smooth',
-                top: 880
+                top: 880,
+                // top: document.body.scrollHeight,
+                behavior: 'smooth'
+                
               }
             );
           },300);
@@ -106,6 +112,10 @@ export function App() {
             let ArrayToDisplay = [];
             for (let i = 1 ; i <= QtdPontos; i++){
 
+            if(!Loec[i][0]?.GRUPO){
+              alert("Erro: Campo 'GRUPO' com falhas no preenchimento!");
+            }
+            
             const PontoAtual = Loec[i][0].GRUPO;
 
             const Endereco = Loec[i][0].ENDEREÇO;
@@ -120,9 +130,9 @@ export function App() {
 
             const Distrito = Loec[i][0].DISTRITO;
 
-            const Bairro = Loec[i][0].BAIRRO;
+            // const Bairro = Loec[i][0].BAIRRO;
 
-            ArrayToDisplay.push([QtdPontos, PontoAtual, Endereco, QtdObjetos, Objetos, Coordenadas, Distrito, Bairro]);
+            ArrayToDisplay.push([QtdPontos, PontoAtual, Endereco, QtdObjetos, Objetos, Coordenadas, Distrito]);
                 
             }
             setLista([ArrayToDisplay]);
@@ -194,7 +204,10 @@ export function App() {
               
               const Coordenadas = Loec[i][0].COORDENADAS;
 
-              ArrayCoordToDisplay.push([NumeroDeOrdem, PontosDeEntrega, Endereco, NumeroDeEntrega, Coordenadas]);
+              const Bairro = Loec[i][0].BAIRRO;
+
+
+              ArrayCoordToDisplay.push([NumeroDeOrdem, PontosDeEntrega, Endereco, NumeroDeEntrega, Coordenadas, Bairro]);
                 
             }
             setCoordLista([ArrayCoordToDisplay]);
@@ -304,6 +317,8 @@ export function App() {
   let compare = [];
   let compareCoord = [];
 
+  // CRIAÇÃO DA LISTA A PARTIR DA TABELA
+  
   // console.log(lista);
   let ruasSemCoordenadas = '';
 
@@ -319,6 +334,8 @@ export function App() {
     }
   // console.log(coordLista);
 
+  // CRIAÇÃO DA LISTA DE COORDENADAS A PARTIR DA TABELA
+
     for( var o = 0; o < coordLista[0].length; o++){
 
       //AQUI FOI MEXIDO
@@ -332,10 +349,14 @@ export function App() {
       // console.log(compareCoord);
 
     }
+
+    // CRIAÇÃO DA LISTA SEM COORDENADAS ENCONTRADAS NA COMPARAÇÃO
     
     let intersection = compare.filter(x => !compareCoord.includes(x));
-    // console.log(intersection);
+    console.log(intersection);
     // setSemCoordenadas(intersection);
+
+    //parte para mexer, comparar para excluir da lista os endereços sem coordenadas e inserir no fim da lista
 
     let itemsToRemove = [];
     
@@ -346,20 +367,21 @@ export function App() {
         if(intersection[z].includes(compareCoord[y])){
 
         let adressesItemsToRemove = intersection[z] ;
-        itemsToRemove.push(adressesItemsToRemove);
+          itemsToRemove.push(adressesItemsToRemove);
         }
       }
-      // console.log(itemsToRemove);
+      console.log(itemsToRemove);
     }
     
 
     let foraDasCoordenadas = intersection.filter(x => !itemsToRemove.includes(x));
     foraDasCoordenadas.sort();
 
-    // console.log(foraDasCoordenadas)
+    console.log(foraDasCoordenadas)
     
     let listaFinal = compareCoord;
     
+
     // console.log(compareCoord);
     intersection.reverse();
    
@@ -400,9 +422,8 @@ export function App() {
                                   
                 const endfinal = listaFinal[e];
                 const objfinal = lista[0][f][4];
-                const bairrofinal = lista[0][f][7]
               
-                listaDeEntrega.push([endfinal, objfinal, bairrofinal]);
+                listaDeEntrega.push([endfinal, objfinal]);
         }
       }
     }
@@ -414,20 +435,9 @@ export function App() {
     listaPDF.length = lista[0].length;
   }
   
-  
-let mapaBairro = '';
-let downloadMapaBairro = '';
-if (lista.length !== 0 && coordLista.length !== 0){  
+// console.log(listaDeEntrega)
 
-  if(mapBairro.some(bairro => bairro.id.includes(listaDeEntrega[index][2]))){
-    let mapView = mapBairro.filter(bairro => bairro.id.includes(listaDeEntrega[index][2]));
-
-    // console.log(mapView[0].id);
-    mapaBairro = mapView[0].id;
-    downloadMapaBairro = mapView[0].download;
-    
-  }
-}
+  // console.log(coordLista[0][index])
   // console.log(mapBairro)
   // console.log(downloadMapaBairro);
 
@@ -436,7 +446,9 @@ if (lista.length !== 0 && coordLista.length !== 0){
 
 const styles = StyleSheet.create({
   page: { padding: 25, backgroundColor: '#FFF' },
-  section: { margin: 10, padding: 10, flexGrow: 1, fontSize: 10}
+  section: { margin: 10, padding: 10, flexGrow: 1, fontSize: 10},
+  currentDateView: { position: 'absolute', fontSize: 10, bottom: 15, left: 30 },
+  pageNumber: {position: 'absolute', fontSize: 10, bottom: 15, right: 30},
 });
 
 
@@ -450,8 +462,19 @@ const MyDocument = () => (
               <View wrap={false} key={index} style={{ marginBottom: 20, borderBottom: 0.5, paddingBottom: 10}}>
 
                 {index === (listaPDF.length - ruasSemCoordenadasTamanho) ? <Text style={{ fontSize: 20, marginBottom: 10}}>SEM COORDENADAS</Text> : <Text></Text>}
-                <Text style={{ fontSize: 10, marginBottom: 5, alignContent: 'center'}}>Ponto de Entrega:  {index + 1}  de  {listaPDF.length}</Text>
-                <Text style={{ fontSize: 10, marginBottom: 5, alignContent: 'center'}}>Endereço:  {item[0]} <Image src={checkbox} style={{width: 30}} /></Text>
+                
+                <View style={{flexDirection: 'row', width: '100%'}}> 
+                  <View style={{flexDirection: 'column', flexWrap: 'wrap', width: '70%'}}> 
+                    <Text style={{ fontSize: 10, marginBottom: 5, alignContent: 'center'}}>Ponto de Entrega:  {index + 1}  de  {listaPDF.length}</Text>
+                    <Text style={{ fontSize: 10, marginBottom: 5, alignContent: 'center'}}>Endereço:  {item[0]} <Image src={checkbox} style={{width: 30}} /></Text>
+                  </View>
+                
+                  <BarcodeForPDF value={item[1][0]} options={{ width: 2, height: 50 }} />  
+                </View>
+                
+                {/* <BarcodeComponent value={item[1][0]} format="CODE39" /> */}
+                
+                                
                 <Text style={{marginBottom: 5}}>Objeto(s) :</Text> 
                   <View style={{flexDirection: 'row', flexWrap: 'wrap', width: '100%'}}>               
                   {item[1].map((objetos, index)=> (
@@ -461,7 +484,9 @@ const MyDocument = () => (
                 
               </View>
             ))}
-        
+
+            <Text style={styles.currentDateView} fixed>{currentDate}</Text>
+            <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => `Página ${pageNumber} de ${totalPages}`} fixed />
       </View>
     </Page>
   </Document>
@@ -573,6 +598,7 @@ var ListaButton = () => (
     if (coordLista.length !== 0){
       // console.log(lista[0].length);
       // console.log(coordLista[0].length);
+      // console.log(coordLista[0][0][5]);
 
 
       for (var ind = 0; ind < coordLista[0].length; ind++){
@@ -581,11 +607,15 @@ var ListaButton = () => (
 
         var element = coordLista[0][ind][4];
         var endcoord = coordLista[0][ind][4];
+        var bairro = coordLista[0][ind][5];
         } else if(endcoord === undefined || endcoord === "undefined" ){
 
           // element = enderecoatual + ", " + cidade + ", " + estado
           element = enderecoatual + ", Nova Friburgo, RJ";
           // element = enderecoatual
+          if(enderecoatual.includes(coordLista[0][ind][2])){
+            bairro = coordLista[0][ind][5];
+          }
         }
       }
     }
@@ -593,6 +623,20 @@ var ListaButton = () => (
 
   // console.log(element);
   // console.log(endcoord);
+
+  let mapaBairro = '';
+  let downloadMapaBairro = '';
+  if (lista.length !== 0 && coordLista.length !== 0){  
+
+    if(mapBairro.some(bairroCheck => bairroCheck.id.includes(bairro))){
+      let mapView = mapBairro.filter(bairroCheck => bairroCheck.id.includes(bairro));
+
+      // console.log(mapView[0].id);
+      mapaBairro = mapView[0].id;
+      downloadMapaBairro = mapView[0].download;
+      
+    }
+  }
 
 
   const refreshAnimation = document.getElementById('Capa_1');
@@ -738,8 +782,8 @@ var ListaButton = () => (
                 <div className='navinfo'>
                   
                     <h6>Endereço: <p className='endereco'>{listaDeEntrega[index][0]}</p> </h6>
-                    <h6>Bairro: <p className='endereco'>{listaDeEntrega[index][2]}</p> </h6>
-                    <h6 className='mapicons'><a href={mapaBairro} target="_blank" rel="noopener noreferrer"><MapIcon /></a> Mapa <FileDownloadIcon href={downloadMapaBairro} name={`${listaDeEntrega[index][2]}.svg`}/></h6>
+                    <h6>Bairro: <p className='endereco'>{bairro}</p> </h6>
+                    <h6 className='mapicons'><a href={mapaBairro} target="_blank" rel="noopener noreferrer"><MapIcon /></a> Mapa <FileDownloadIcon href={downloadMapaBairro} name={`${bairro}.svg`}/></h6>
 
                   {endcoord === undefined || endcoord === "undefined" ? <h6> Coordenadas: <p>Informações indisponíveis no arquivo de coordenadas,<br></br>coordenadas baseadas pelo endereço informado</p><p className='alert'>ATENÇÃO: endereço sem coordenada <br></br>cadastrada, possível CEP incorreto</p><p style={{display: "none"}} id='Coordenadas'>{element}</p></h6> : <h6> Coordenadas: <p id='Coordenadas'>{element}</p></h6> }
                 
@@ -755,7 +799,8 @@ var ListaButton = () => (
 
                     <div className='noCoordContainer'>
                       
-                      <p className='noCoord'> <InfoIcon2 /> Há {time.length} pontos de entrega sem cadastro de coordenadas</p>
+                      {time.length > 1 ? <p className='noCoord'> <InfoIcon2 /> Há {time.length} pontos de entrega sem cadastro de coordenadas</p> :
+                      <p className='noCoord'> <InfoIcon2 /> Há {time.length} ponto de entrega sem cadastro de coordenadas</p>}
                       <p className='click'>clique<button onClick={toggleContent}>aqui</button>para ver</p>
                       
                       { showContent ?
@@ -769,6 +814,9 @@ var ListaButton = () => (
                         </UlRuas> 
                       </div> : ''}
                           <ListaButton />
+                          {/* <Barcode value={listaDeEntrega[index][1][0]} format="CODE128" width={2} height={100}/> */}
+                          {/* <BarcodeComponent value='ABC-1234' format="CODE39" /> */}
+                          {/* <BarcodeForPDF value={listaDeEntrega[index][1][0]} options={{ width: 1, height: 40 }} /> */}
                       {/* <PDFViewer style={{ width: '100%', height: '50vh' }}>
                         <MyDocument />
                       </PDFViewer> */}
