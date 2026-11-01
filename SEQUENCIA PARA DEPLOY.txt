@@ -1,0 +1,8 @@
+Iniciar Local
+npm start
+
+Preparar Para Deploy
+npm run build 
+
+Realizar Deploy
+npm run deploy

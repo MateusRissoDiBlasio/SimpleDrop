@@ -261,14 +261,36 @@ input{
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
-  img{
+  /* img{
     width: 80px;
     filter: drop-shadow(2px 5px 3px #000);
-  } 
-  
+  }  */
 }
 
-.navapps img:nth-child(2){
+/* Força qualquer imagem ou SVG dentro da caixinha a respeitar o tamanho máximo */
+.navapps img,
+.navapps svg,
+.navapps button {
+  width: 65px !important;
+  height: 65px !important;
+  max-width: 65px;
+  max-height: 65px;
+  object-fit: contain;
+  filter: drop-shadow(2px 5px 3px #000);
+  /* Evita o comportamento de 'clique duplo' para zoom em celulares */
+  touch-action: manipulation; 
+}
+
+/* Ajuste específico para evitar que o efeito de hover trave expandido no touch do celular */
+@media (hover: hover) {
+  .navapps img:hover,
+  .navapps svg:hover {
+    scale: 1.2;
+    cursor: pointer;
+  }
+}
+
+/* .navapps img:nth-child(2){
   width: 65px;
   height: 65px;
 }
@@ -276,7 +298,7 @@ input{
 .navapps img:hover{
   scale: 1.2;
   cursor: pointer;
-}
+} */
 
 .loading{
   animation: pulse 2s ease-in-out infinite;

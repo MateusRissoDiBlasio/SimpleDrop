@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
+    <!-- Adicione este bloco aqui antes de qualquer outro script -->
+    <script>
+      if (typeof globalThis !== 'undefined' && typeof globalThis.Buffer === 'undefined') {
+        globalThis.Buffer = {
+          isBuffer: () => false
+        };
+      }
+    </script>
     
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
